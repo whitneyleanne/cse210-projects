@@ -1,24 +1,15 @@
 using System;
 
-Console.WriteLine("Hello Prep1 World!");
-
-//string interpolation
-int myInt = 5;
-Console.WriteLine("my int = " + {myInt});
-Console.WriteLine($"my int = {myInt}")
-
-//read line
-Console.Write("What is your name? ");
-string name = Console.ReadLine();
-Console.WriteLine($"name = {name}");
-
-
-//conditionals
-if (name == "Whitney")
+class Program
 {
-    Console.WriteLine("Hey that's me!");
-}
-else
-{
-    Console.WriteLine($"Hi there {name}");
+    static void Main(string[] args)
+    {
+        Console.Write("What is your first name? ");
+        string first = Console.ReadLine();
+
+        Console.Write("What is your last name? ");
+        string last = Console.ReadLine();
+
+        Console.WriteLine($"Your name is {last}, {first} {last}.");
+    }
 }
