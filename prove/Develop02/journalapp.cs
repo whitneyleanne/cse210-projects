@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class JournalApp
 {
     static void Main(string[] args)
     {

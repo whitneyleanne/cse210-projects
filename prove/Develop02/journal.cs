@@ -50,7 +50,8 @@ public class Journal
 
     public void LoadFromFile(string filename)
     {
-        EntriesList.Clear(); // Clear existing entries before loading
+        EntriesList.Clear(); 
+        // Clear existing entries before loading
 
         try
         {
