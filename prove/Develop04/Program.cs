@@ -56,12 +56,12 @@ public abstract class ActivityBase
         Console.Write("Please set the duration of the activity in seconds: ");
         duration = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Prepare to begin...");
-        ShowAnimation(3);  // Assuming a 3-second pause before starting
+        ShowAnimation(3);  
     }
 
     public void EndActivity()
     {
-        Console.WriteLine("\nYou have done a good job!");
+        Console.WriteLine("\nGood Job!");
         ShowAnimation(3);
         Console.WriteLine($"You have completed the {name} activity for {duration} seconds.");
         ShowAnimation(3);
@@ -74,14 +74,14 @@ public abstract class ActivityBase
     {
             foreach (var animChar in animationChars)
         {
-                Console.Write("\r" + animChar);  // "\r" is used to overwrite the current line in the console.
-                Thread.Sleep(250);  // Wait for a quarter second before showing the next character
+                Console.Write("\r" + animChar); 
+                Thread.Sleep(250); 
         }
     }
-        Console.WriteLine();  // Move to the next line after the animation is done
+        Console.WriteLine();  
     }
 
-    public abstract void Execute();  // This method will be implemented by each derived class
+    public abstract void Execute();  
 }
 
 // THREE activities
@@ -94,11 +94,11 @@ public class BreathingActivity : ActivityBase
 
     public override void Execute()
     {
-        int cycles = duration / 6;  // Assuming 3 seconds for "Breathe in" and 3 seconds for "Breathe out"
+        int cycles = duration / 6;  
         for (int i = 0; i < cycles; i++)
         {
             Console.WriteLine("Breathe in...");
-            ShowAnimation(3);
+            ShowAnimation(4);
             Console.WriteLine("Breathe out...");
             ShowAnimation(3);
         }
@@ -144,7 +144,7 @@ public class ReflectionActivity : ActivityBase
         var prompt = GetRandomPrompt();
         Console.WriteLine(prompt);
 
-        int questionTime = duration / 3;  // Assuming we ask 3 questions in the given duration
+        int questionTime = duration / 3;
         for (int i = 0; i < 3; i++)
         {
             var question = GetRandomQuestion();
@@ -157,7 +157,7 @@ public class ReflectionActivity : ActivityBase
     {
         int index = random.Next(reflectionPrompts.Count);
         var prompt = reflectionPrompts[index];
-        reflectionPrompts.RemoveAt(index);  // Remove used prompt to avoid repetition
+        reflectionPrompts.RemoveAt(index); //This is to remove repetition :) 
         return prompt;
     }
 
@@ -165,7 +165,7 @@ public class ReflectionActivity : ActivityBase
     {
         int index = random.Next(reflectionQuestions.Count);
         var question = reflectionQuestions[index];
-        reflectionQuestions.RemoveAt(index);  // Remove used question to avoid repetition
+        reflectionQuestions.RemoveAt(index); 
         return question;
     }
 }
@@ -216,7 +216,7 @@ public class ListingActivity : ActivityBase
     {
         int index = random.Next(listingPrompts.Count);
         var prompt = listingPrompts[index];
-        listingPrompts.RemoveAt(index);  // Remove used prompt to avoid repetition
+        listingPrompts.RemoveAt(index); 
         return prompt;
     }
 }
