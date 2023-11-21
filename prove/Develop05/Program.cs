@@ -118,10 +118,30 @@ private static void LoadGoals(GoalManager manager)
 
 private static void RecordEvent(GoalManager manager)
 {
-    Console.Write("Enter the name of the goal to record an event for: ");
-    string goalName = Console.ReadLine();
-    manager.RecordGoalEvent(goalName);
-    Console.WriteLine("Event recorded successfully.");
+    var goalNames = manager.GetGoalNames().ToList();
+    if (goalNames.Any())
+    {
+        Console.WriteLine("Select a goal to record an event for:");
+        for (int i = 0; i < goalNames.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {goalNames[i]}");
+        }
+        Console.Write("Enter the number of the goal: ");
+        if (int.TryParse(Console.ReadLine(), out int goalNumber) && goalNumber >= 1 && goalNumber <= goalNames.Count)
+        {
+            manager.RecordGoalEvent(goalNames[goalNumber - 1]);
+            Console.WriteLine("Event recorded successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Invalid selection. Please try again.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No goals available to record an event for.");
+    }
 }
+
 
 }

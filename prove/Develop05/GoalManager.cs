@@ -48,4 +48,9 @@ public class GoalManager
     {
         Console.WriteLine($"Total Score: {TotalScore}");
     }
+
+    public IEnumerable<string> GetGoalNames()
+    {
+    return goals.Select(g => g.Name);
+    }
 }
