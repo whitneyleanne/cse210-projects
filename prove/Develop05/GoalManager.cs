@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 public class GoalManager
 {
     private List<BaseGoal> goals = new List<BaseGoal>();
@@ -20,8 +17,14 @@ public class GoalManager
         if (goal != null)
         {
             goal.RecordEvent();
-            AddToTotalScore(goal.Points);
+            UpdateTotalScore(goal);
         }
+    }
+
+    private void UpdateTotalScore(BaseGoal goal)
+    {
+        totalScore += goal.Points;
+        goal.Points = 0; // Reset goal points after they have been added to the total
     }
 
     public void DisplayGoals()
@@ -32,20 +35,13 @@ public class GoalManager
         }
     }
 
-    public void DisplayScore()
-    {
-        Console.WriteLine($"Total Score: {TotalScore}");
-    }
-
-    // New method to update the total score
     public void SetTotalScore(int score)
     {
         totalScore = score;
     }
 
-    // Private method to add points to the total score
-    private void AddToTotalScore(int points)
+    public void DisplayScore()
     {
-        totalScore += points;
+        Console.WriteLine($"Total Score: {TotalScore}");
     }
 }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 public class FileHandler
 {
     public static void SaveToFile(string filename, GoalManager manager)
@@ -16,11 +12,10 @@ public class FileHandler
                 {
                     file.WriteLine($"{checklistGoal.CurrentCount},{checklistGoal.TargetCount},{checklistGoal.BonusPoints}");
                 }
-
-    if (int.TryParse(file.ReadLine(), out int totalScore))
-    {
-        manager.SetTotalScore(totalScore);
-    }
+                else if (goal is NegativeGoal negativeGoal)
+                {
+                    file.WriteLine($"{negativeGoal.PenaltyPoints}");
+                }
             }
         }
     }
@@ -33,7 +28,7 @@ public class FileHandler
         {
             if (int.TryParse(file.ReadLine(), out int totalScore))
             {
-                manager.TotalScore = totalScore;
+                manager.SetTotalScore(totalScore);
             }
 
             string line;
@@ -53,6 +48,7 @@ public class FileHandler
                         "SimpleGoal" => new SimpleGoal(name, points),
                         "EternalGoal" => new EternalGoal(name, points),
                         "ChecklistGoal" => new ChecklistGoal(name, points, 0, 0),
+                        "NegativeGoal" => new NegativeGoal(name, 0),
                         _ => null
                     };
 
@@ -69,8 +65,14 @@ public class FileHandler
                                 int.TryParse(checklistParts[0], out int currentCount);
                                 int.TryParse(checklistParts[1], out int targetCount);
                                 int.TryParse(checklistParts[2], out int bonusPoints);
-
                                 checklistGoal.SetChecklistDetails(currentCount, targetCount, bonusPoints);
+                            }
+                        }
+                        else if (goal is NegativeGoal negativeGoal && (line = file.ReadLine()) != null)
+                        {
+                            if (int.TryParse(line, out int penaltyPoints))
+                            {
+                                negativeGoal.PenaltyPoints = penaltyPoints;
                             }
                         }
                     }
