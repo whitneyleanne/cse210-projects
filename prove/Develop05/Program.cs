@@ -113,7 +113,7 @@ private static void LoadGoals(GoalManager manager)
     string filename = Console.ReadLine();
     var loadedManager = FileHandler.LoadFromFile(filename);
     Console.WriteLine("Goals loaded successfully.");
-    // Note: You may want to handle merging or replacing current goals.
+    
 }
 
 private static void RecordEvent(GoalManager manager)

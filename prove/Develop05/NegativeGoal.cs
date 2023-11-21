@@ -3,7 +3,7 @@ public class NegativeGoal : BaseGoal
     public int PenaltyPoints { get; set; }
 
     public NegativeGoal(string name, int penaltyPoints) 
-        : base(name, 0) // Initial points set to 0 as this goal deducts points
+        : base(name, 0) 
     {
         PenaltyPoints = penaltyPoints;
     }

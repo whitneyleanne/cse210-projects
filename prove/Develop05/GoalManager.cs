@@ -24,15 +24,19 @@ public class GoalManager
     private void UpdateTotalScore(BaseGoal goal)
     {
         totalScore += goal.Points;
-        goal.Points = 0; // Reset goal points after they have been added to the total
+        goal.Points = 0; 
     }
 
+    // Displays the goals
     public void DisplayGoals()
     {
         foreach (var goal in goals)
         {
             Console.WriteLine(goal);
         }
+
+        int totalPointsEarned = goals.Sum(g => g.Points);
+        Console.WriteLine($"\nTotal Points Earned: {totalPointsEarned}");
     }
 
     public void SetTotalScore(int score)
