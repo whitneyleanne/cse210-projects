@@ -20,7 +20,7 @@ public class ChecklistGoal : BaseGoal
             IsComplete = true;
             Points += BonusPoints;
         }
-    }
+    } 
 
     public void SetChecklistDetails(int currentCount, int targetCount, int bonusPoints)
 {
@@ -35,3 +35,4 @@ public class ChecklistGoal : BaseGoal
         return $"{base.ToString()} Completed {CurrentCount}/{TargetCount} times";
     }
 }
+ 
