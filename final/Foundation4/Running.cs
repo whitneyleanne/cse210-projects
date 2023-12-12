@@ -1,6 +1,5 @@
 class Running : Activity {
-    public double DistanceInKm { get; private set; } // Distance in kilometers
-
+    public double DistanceInKm { get; private set; } 
     public Running(DateTime date, int durationInMinutes, double distanceInKm)
         : base(date, durationInMinutes) {
         DistanceInKm = distanceInKm;
