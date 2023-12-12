@@ -1,5 +1,5 @@
 class Cycling : Activity {
-    public double SpeedInKph { get; private set; } // Speed in kilometers per hour
+    public double SpeedInKph { get; private set; }
 
     public Cycling(DateTime date, int durationInMinutes, double speedInKph)
         : base(date, durationInMinutes) {

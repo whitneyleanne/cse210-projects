@@ -6,9 +6,9 @@ class Program {
         var product2 = new Product("Headphones", 102, 49.99m, 2);
 
         var address = new Address("123 Main St", "New York", "NY", "USA");
-        var customer = new Customer("John Doe", address);
+        var customer1 = new Customer("John Doe", address);
 
-        var order = new Order(customer);
+        var order = new Order(customer1);
         order.AddProduct(product1);
         order.AddProduct(product2);
 
